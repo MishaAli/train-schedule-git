@@ -4,13 +4,15 @@ plugins {
 }
 
 node {
-	download = true
-	version = "9.11.1"
-	npmVersion = "5.6.0"
+  version = '6.10.2'
+  npmVersion = '3.10.6'
+  download = true
 }
 
 //declare a build task
-task build
+task build(type: NpmTask) {
+    args = ['run', 'build']
+}
 
 //declare a task to create a zip of the app
 task zip(type: Zip) {
