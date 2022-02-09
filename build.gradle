@@ -1,3 +1,9 @@
+buildscript {
+  dependencies {
+    classpath 'com.moowork.gradle:gradle-node-plugin:0.12'
+  }
+}
+
 apply plugin: "com.moowork.node"
 
 node {
