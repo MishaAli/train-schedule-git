@@ -1,0 +1,35 @@
+// primary task
+// node js plugin
+
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
+// configuration on plugin - instruct plugin to install npm and nodejs locally
+// node and npm are packaged with the project and dont need to be installed for it
+node {
+ download = false
+}
+
+task build
+
+task zip(type: Zip) {
+    from ('.') {
+	    include "*"
+	    include "bin/**"
+	    include "data/**"
+	    include "node_modules/**"
+	    include "public/**"
+	    include "routes/**"
+	    include "views/**"
+    }
+    destinationDir(file("dist"))
+    baseName "trainSchedule"
+}
+
+build.dependsOn zip
+zip.dependsOn npm_build
+build.dependsOn npm_build
+npm_build.dependsOn npmInstall
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
