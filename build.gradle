@@ -4,17 +4,19 @@ plugins {
 }
 
 node {
-	download = true
-	version = '14.17.0'
-}
-
-task setUp(type: NpmTask) {
-    description = "install nodeJS packages"
-    args = ["install"]
+  version = '6.10.2'
+  npmVersion = '3.10.6'
+  download = true
+  workDir = file("${project.buildDir}/node")
+  nodeModulesDir = file("${project.projectDir}")
 }
 
 //declare a build task
-task build
+task build(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+build.dependsOn(npm_install)
 
 //declare a task to create a zip of the app
 task zip(type: Zip) {
@@ -34,6 +36,7 @@ task zip(type: Zip) {
 //declare task dependencies
 build.dependsOn zip
 zip.dependsOn npm_build
+
 npm_build.dependsOn npm_test
 npm_test.dependsOn npmInstall
 npm_build.dependsOn npmInstall
