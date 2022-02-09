@@ -5,6 +5,12 @@ plugins {
 
 node {
 	download = true
+	version = '14.17.0'
+}
+
+task setUp(type: NpmTask) {
+    description = "install nodeJS packages"
+    args = ["install"]
 }
 
 //declare a build task
