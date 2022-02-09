@@ -9,6 +9,14 @@ node {
   download = true
 }
 
+repositories.whenObjectAdded {
+    if (it instanceof IvyArtifactRepository) {
+        metadataSources {
+            artifact()
+        }
+    }
+}
+
 //declare a build task
 task build(type: NpmTask) {
     args = ['run', 'build']
