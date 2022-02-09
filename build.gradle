@@ -4,19 +4,12 @@ plugins {
 }
 
 node {
-  version = '6.10.2'
   npmVersion = '3.10.6'
   download = true
-  workDir = file("${project.buildDir}/node")
-  nodeModulesDir = file("${project.projectDir}")
 }
 
 //declare a build task
-task build(type: NpmTask) {
-    args = ['run', 'build']
-}
-
-build.dependsOn(npm_install)
+task build
 
 //declare a task to create a zip of the app
 task zip(type: Zip) {
