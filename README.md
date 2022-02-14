@@ -4,12 +4,12 @@ Simple train schedule app written using nodejs. Intended to the use of demonstra
 
 ## Running the app
 
-In order to run the App, start with a local installation of npm. Begin by installing the npm dependencies with:
+In order to run the App, a Java JDK 7 or later to run the build is needed. Then the build can be run in the following manner.
 
-    npm install
+    ./gradlew build
 
-Then, you can run the app with:
+You can run the app with:
 
-    npm start
+    ./gradlew npm_start
 
-Once it is running, you can access it in a browser at [http://localhost:3000](http://localhost:3000)
+Once it is running, app can ve browsed at [http://localhost:3000](http://localhost:3000)
