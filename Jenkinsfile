@@ -18,7 +18,7 @@ pipeline {
 //                     app.inside {
 //                         sh 'echo $(curl localhost:8080)'
 //                     }
-                    docker.image('my-custom-image').inside {
+                    docker.image('mishaa/train-schedule').inside {
                         sh 'echo $(curl localhost:8080)'
                     }
                 }
