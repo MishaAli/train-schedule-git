@@ -15,7 +15,10 @@ pipeline {
             steps {
                 script {
                     app = docker.build("mishaa/train-schedule")
-                    app.inside {
+//                     app.inside {
+//                         sh 'echo $(curl localhost:8080)'
+//                     }
+                    docker.image('my-custom-image').inside {
                         sh 'echo $(curl localhost:8080)'
                     }
                 }
