@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("mishaaali/train-schedule")
                     app.inside {
-                        sh 'echo $(curl 54.174.80.226:3000)'
+                        sh 'echo $(curl localhost:3000)'
                     }
                 }
             }
