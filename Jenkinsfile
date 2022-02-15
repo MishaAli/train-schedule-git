@@ -15,12 +15,12 @@ pipeline {
             steps {
                 script {
                     app = docker.build("mishaa/train-schedule")
-//                     app.inside {
-//                         sh 'echo $(curl localhost:8080)'
-//                     }
-                    docker.image('mishaa/train-schedule').inside {
+                    app.inside {
                         sh 'echo $(curl localhost:8080)'
                     }
+//                     docker.image('mishaa/train-schedule').inside {
+//                         sh 'echo $(curl localhost:8080)'
+//                     }
                 }
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
+                    docker.withRegistry('https://hub.docker.com/', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
